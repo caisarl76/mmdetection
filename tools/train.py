@@ -66,6 +66,7 @@ def main():
 
     # load config
     cfg = Config.fromfile(args.config)
+    
     cfg.launcher = args.launcher
     if args.cfg_options is not None:
         cfg.merge_from_dict(args.cfg_options)
@@ -104,6 +105,8 @@ def main():
         cfg.resume = True
         cfg.load_from = args.resume
 
+    print(cfg)
+    
     # build the runner from config
     if 'runner_type' not in cfg:
         # build the default runner

@@ -30,6 +30,9 @@ from .wider_face import WIDERFaceDataset
 from .xml_style import XMLDataset
 from .youtube_vis_dataset import YouTubeVISDataset
 
+from .pantos import PantosDataset
+from .pantos_sleeve import PantosSleeveDataset
+
 __all__ = [
     'XMLDataset', 'CocoDataset', 'DeepFashionDataset', 'VOCDataset',
     'CityscapesDataset', 'LVISDataset', 'LVISV05Dataset', 'LVISV1Dataset',
@@ -42,5 +45,6 @@ __all__ = [
     'ReIDDataset', 'YouTubeVISDataset', 'TrackAspectRatioBatchSampler',
     'ADE20KPanopticDataset', 'CocoCaptionDataset', 'RefCocoDataset',
     'BaseSegDataset', 'ADE20KSegDataset', 'CocoSegDataset',
-    'ADE20KInstanceDataset', 'iSAIDDataset', 'V3DetDataset', 'ConcatDataset'
+    'ADE20KInstanceDataset', 'iSAIDDataset', 'V3DetDataset', 'ConcatDataset',
+    'PantosDataset','PantosSleeveDataset',
 ]

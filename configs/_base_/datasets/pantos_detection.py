@@ -1,6 +1,6 @@
 # dataset settings
-dataset_type = 'CocoDataset'
-data_root = '/data/coco/'
+dataset_type = 'PantosDataset'
+data_root = '/data/lx_pantos/'
 
 # Example to use different file client
 # Method 1: simply set the data root and let the file I/O module
@@ -35,7 +35,7 @@ test_pipeline = [
                    'scale_factor'))
 ]
 train_dataloader = dict(
-    batch_size=2,
+    batch_size=4,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -43,13 +43,13 @@ train_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        ann_file='annotations/instances_val2017.json',
-        data_prefix=dict(img='images/val2017/'),
+        ann_file='annotation_231031/train.json',
+        data_prefix=dict(img='img_231031/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline,
         backend_args=backend_args))
 val_dataloader = dict(
-    batch_size=1,
+    batch_size=4,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,
@@ -57,8 +57,8 @@ val_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        ann_file='annotations/instances_val2017.json',
-        data_prefix=dict(img='val2017/'),
+        ann_file='annotation_231031/val.json',
+        data_prefix=dict(img='img_231031/'),
         test_mode=True,
         pipeline=test_pipeline,
         backend_args=backend_args))
@@ -66,7 +66,7 @@ test_dataloader = val_dataloader
 
 val_evaluator = dict(
     type='CocoMetric',
-    ann_file=data_root + 'annotations/instances_val2017.json',
+    ann_file=data_root + 'annotation_231031/val.json',
     metric='bbox',
     format_only=False,
     backend_args=backend_args)
