@@ -16,19 +16,19 @@ class CocoDataset(BaseDetDataset):
 
     METAINFO = {
         'classes':
-        ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train',
-         'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign',
-         'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep',
-         'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella',
-         'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard',
-         'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard',
-         'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork',
-         'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange',
-         'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair',
-         'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv',
-         'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave',
-         'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase',
-         'scissors', 'teddy bear', 'hair drier', 'toothbrush'),
+        ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', #7
+         'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign',         #6
+         'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep',      #7
+         'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', #7
+         'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard',          #6
+         'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', #5
+         'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork',   #6
+         'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange',     #7
+         'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair',    #7
+         'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv',        #6
+         'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave',    #6
+         'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase',    #7
+         'scissors', 'teddy bear', 'hair drier', 'toothbrush'),                 #4
         # palette is a list of color tuples, which is used for visualization.
         'palette':
         [(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230), (106, 0, 228),

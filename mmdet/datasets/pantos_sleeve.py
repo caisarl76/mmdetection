@@ -15,27 +15,13 @@ class PantosSleeveDataset(BaseDetDataset):
     """Dataset for COCO."""
 
     METAINFO = {
-        'classes':
-            (
-                '압착슬리브_정면',
-                '압착슬리브_미압착',
-                '압착슬리브_측면',
-                '재사용',
-                '구리선',
-                '협의_필요',
-                '열수축튜브',
-                '절연테이프'
-                ),
+    'classes':('slv_right', 
+               'slv_wrong',
+               ),
         'palette':
             [
-                (220, 20, 60),
-                (119, 11, 32),
                 (0, 0, 142),
-                (0, 0, 230),
-                (106, 0, 228),
                 (0, 60, 100),
-                (0, 80, 100),
-                (0, 0, 70)
                 ]
     }
     COCOAPI = COCO

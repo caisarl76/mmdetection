@@ -32,6 +32,7 @@ from .youtube_vis_dataset import YouTubeVISDataset
 
 from .pantos import PantosDataset
 from .pantos_sleeve import PantosSleeveDataset
+from .pantos_ver2 import PantosDatasetVer2
 
 __all__ = [
     'XMLDataset', 'CocoDataset', 'DeepFashionDataset', 'VOCDataset',
@@ -46,5 +47,5 @@ __all__ = [
     'ADE20KPanopticDataset', 'CocoCaptionDataset', 'RefCocoDataset',
     'BaseSegDataset', 'ADE20KSegDataset', 'CocoSegDataset',
     'ADE20KInstanceDataset', 'iSAIDDataset', 'V3DetDataset', 'ConcatDataset',
-    'PantosDataset','PantosSleeveDataset',
+    'PantosDataset','PantosSleeveDataset','PantosDatasetVer2',
 ]
