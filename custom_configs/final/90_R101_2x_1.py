@@ -4,6 +4,7 @@ _base_ = [
 train_ann='final_ann/stats/train_1.json'
 val_ann = 'final_ann/stats/val_1.json'
 img_path='images/'
+train_batch_size = 8
 
 ##########################################################################
 # model settings
@@ -62,7 +63,7 @@ test_pipeline = [
                    'scale_factor'))
 ]
 train_dataloader = dict(
-    batch_size=8,
+    batch_size=train_batch_size,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
