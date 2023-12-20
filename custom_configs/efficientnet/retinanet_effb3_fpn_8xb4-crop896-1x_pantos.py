@@ -4,6 +4,11 @@ _base_ = [
     '../_base_/datasets/pantos_detection.py', '../_base_/default_runtime.py'
 ]
 
+train_ann='final_ann/stats/train_1.json'
+val_ann = 'final_ann/stats/val_1.json'
+img_path='images/'
+train_batch_size = 8
+
 image_size = (896, 896)
 batch_augments = [dict(type='BatchFixedSizePad', size=image_size)]
 norm_cfg = dict(type='BN', requires_grad=True)
@@ -40,6 +45,29 @@ model = dict(
     # training and testing settings
     train_cfg=dict(assigner=dict(neg_iou_thr=0.5)))
 
+
+dataset_type = 'PantosDatasetVer2'
+data_root = '/data/lx_pantos/'
+
+metainfo = {
+    'classes':('slv_right', 
+               'slv_wrong',
+               'copper',
+               'tube',
+               'tape'
+               ),
+        'palette':
+            [
+                (0, 0, 142),
+                (0, 60, 100),
+                (220, 20, 60),
+                (119, 11, 32),
+                (106, 0, 228),
+                ]
+    }
+
+
+backend_args = None
 # dataset settings
 train_pipeline = [
     dict(type='LoadImageFromFile', backend_args={{_base_.backend_args}}),
@@ -63,9 +91,35 @@ test_pipeline = [
                    'scale_factor'))
 ]
 train_dataloader = dict(
-    batch_size=4, num_workers=4, dataset=dict(pipeline=train_pipeline))
-val_dataloader = dict(batch_size=4, dataset=dict(pipeline=test_pipeline))
+    batch_size=train_batch_size,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(type='DefaultSampler', shuffle=True),
+    batch_sampler=dict(type='AspectRatioBatchSampler'),
+    dataset=dict(
+        type=dataset_type,
+        data_root=data_root,
+        ann_file=train_ann,
+        data_prefix=dict(img=img_path),
+        filter_cfg=dict(filter_empty_gt=True, min_size=32),
+        pipeline=train_pipeline,
+        backend_args=backend_args))
+val_dataloader = dict(
+    batch_size=8,
+    num_workers=2,
+    persistent_workers=True,
+    drop_last=False,
+    sampler=dict(type='DefaultSampler', shuffle=False),
+    dataset=dict(
+        type=dataset_type,
+        data_root=data_root,
+        ann_file=val_ann,
+        data_prefix=dict(img=img_path),
+        test_mode=True,
+        pipeline=test_pipeline,
+        backend_args=backend_args))
 test_dataloader = val_dataloader
+
 
 # optimizer
 optim_wrapper = dict(
